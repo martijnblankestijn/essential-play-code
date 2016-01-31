@@ -24,9 +24,9 @@ object AuthServiceMessages {
 
   implicit object LoginResponseFormat extends OFormat[LoginResponse] {
     def reads(in: JsValue) = (in \ "type") match {
-      case JsString("LoginSuccess")      => LoginSuccessFormat.reads(in)
-      case JsString("UserNotFound")      => UserNotFoundFormat.reads(in)
-      case JsString("PasswordIncorrect") => PasswordIncorrectFormat.reads(in)
+      case JsDefined(JsString("LoginSuccess"))      => LoginSuccessFormat.reads(in)
+      case JsDefined(JsString("UserNotFound"))      => UserNotFoundFormat.reads(in)
+      case JsDefined(JsString("PasswordIncorrect")) => PasswordIncorrectFormat.reads(in)
       case other => JsError(JsPath \ "type", s"Invalid type: $other")
     }
 
@@ -48,8 +48,8 @@ object AuthServiceMessages {
 
   implicit object WhoamiResponseFormat extends OFormat[WhoamiResponse] {
     def reads(in: JsValue) = (in \ "type") match {
-      case JsString("Credentials")     => CredentialsFormat.reads(in)
-      case JsString("SessionNotFound") => SessionNotFoundFormat.reads(in)
+      case JsDefined(JsString("Credentials"))     => CredentialsFormat.reads(in)
+      case JsDefined(JsString("SessionNotFound")) => SessionNotFoundFormat.reads(in)
       case other => JsError(JsPath \ "type", s"Invalid type: $other")
     }
 

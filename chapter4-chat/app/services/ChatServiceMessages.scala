@@ -20,8 +20,8 @@ object ChatServiceMessages  {
 
   implicit object MessagesResponseFormat extends OFormat[MessagesResponse] {
     def reads(in: JsValue) = (in \ "type") match {
-      case JsString("MessagesSuccess")      => MessagesSuccessFormat.reads(in)
-      case JsString("MessagesUnauthorized") => MessagesUnauthorizedFormat.reads(in)
+      case JsDefined(JsString("MessagesSuccess"))      => MessagesSuccessFormat.reads(in)
+      case JsDefined(JsString("MessagesUnauthorized")) => MessagesUnauthorizedFormat.reads(in)
       case other => JsError(JsPath \ "type", s"Invalid type: $other")
     }
 
@@ -46,8 +46,8 @@ object ChatServiceMessages  {
 
   implicit object ChatResponseFormat extends OFormat[ChatResponse] {
     def reads(in: JsValue) = (in \ "type") match {
-      case JsString("ChatSuccess")      => ChatSuccessFormat.reads(in)
-      case JsString("ChatUnauthorized") => ChatUnauthorizedFormat.reads(in)
+      case JsDefined(JsString("ChatSuccess"))      => ChatSuccessFormat.reads(in)
+      case JsDefined(JsString("ChatUnauthorized")) => ChatUnauthorizedFormat.reads(in)
       case other => JsError(JsPath \ "type", s"Invalid type: $other")
     }
 
