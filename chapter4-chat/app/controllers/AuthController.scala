@@ -3,10 +3,11 @@ package controllers
 import play.api._
 import play.api.data._
 import play.api.data.Forms._
+import play.api.i18n.I18nSupport
 import play.api.mvc._
 import play.api.libs.json._
 
-object AuthController extends Controller with ControllerHelpers {
+object AuthController extends Controller with ControllerHelpers with I18nSupport{
   import services.AuthService
   import services.AuthServiceMessages._
 

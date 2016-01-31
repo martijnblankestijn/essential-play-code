@@ -4,13 +4,14 @@ import play.api.Logger
 import play.api.Play.current
 import play.api.data._
 import play.api.data.Forms._
+import play.api.i18n.I18nSupport
 import play.api.mvc._
 import play.api.libs.concurrent.Execution.Implicits._
 import play.api.libs.json._
 import play.api.libs.ws._
 import scala.concurrent.{ Future, ExecutionContext }
 
-object AuthController extends Controller with SiteControllerHelpers {
+object AuthController extends Controller with SiteControllerHelpers with I18nSupport {
   import services.AuthServiceMessages._
 
   val authClient = new clients.AuthServiceClient

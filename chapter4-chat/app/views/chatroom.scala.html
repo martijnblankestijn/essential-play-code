@@ -1,4 +1,4 @@
-@(messages: Seq[services.ChatServiceMessages.Message], chatForm: Form[services.ChatServiceMessages.ChatRequest])
+@(messages: Seq[services.ChatServiceMessages.Message], chatForm: Form[services.ChatServiceMessages.ChatRequest])(implicit msgs: Messages)
 
 @layout("chatroom") {
   <h1>Chat</h1>
